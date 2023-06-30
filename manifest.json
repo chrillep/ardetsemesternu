@@ -4,9 +4,9 @@
   "display": "minimal-ui",
   "scope": "/",
   "start_url": "/",
-  "name": "Är det lunch?",
-  "short_name": "Är det lunch?",
-  "description": "Är det lunch?",
+  "name": "Är det semester?",
+  "short_name": "Är det semester?",
+  "description": "Är det semester?",
   "icons": [
     {
       "src": "/icon-192x192.png",

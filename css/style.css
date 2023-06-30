@@ -5,11 +5,11 @@ body {
   color: #0a3c5c;
 }
 
-#lunchform {
+#semesterform {
   text-align: center;
 }
 
-#lunchtid,
+#semestertid,
 h1 {
   margin: 10vmin 0;
   text-align: center;

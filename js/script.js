@@ -1,7 +1,7 @@
 navigator.serviceWorker.register("service-worker.js");
-const defaultPageTitle = "Är det lunch?";
+const defaultPageTitle = "Är det semester?";
 const timeInput = document.getElementById("tid");
-const lunchtid = document.getElementById("lunchtid");
+const semestertid = document.getElementById("semestertid");
 
 timeInput.value = "12:00";
 
@@ -14,39 +14,39 @@ if (urlParam("tid") !== null) {
   timeInput.value = urlParam("tid");
 }
 
-const getHoursAndMinutesFromString = (lunchTime) => {
-  const decodedLunchTime = decodeURIComponent(lunchTime);
-  const lunchTimeSplit = decodedLunchTime.split(":");
-  const hours = parseInt(lunchTimeSplit[0]);
-  const minutes = parseInt(lunchTimeSplit[1]);
+const getHoursAndMinutesFromString = (semesterTime) => {
+  const decodedSemesterTime = decodeURIComponent(semesterTime);
+  const semesterTimeSplit = decodedSemesterTime.split(":");
+  const hours = parseInt(semesterTimeSplit[0]);
+  const minutes = parseInt(semesterTimeSplit[1]);
   return { hours, minutes };
 };
 
-const getLunchTime = () => {
-  const lunchTime = timeInput.value;
+const getSemesterTime = () => {
+  const semesterTime = timeInput.value;
   const today = new Date();
-  document.title = defaultPageTitle + " Lunchtid " + lunchTime;
-  const { hours, minutes } = getHoursAndMinutesFromString(lunchTime);
+  document.title = defaultPageTitle + " Semestertid " + semesterTime;
+  const { hours, minutes } = getHoursAndMinutesFromString(semesterTime);
   today.setHours(hours, minutes, 0, 0);
   return today.getTime();
 };
 
 const renderTimeLeft = (timeLeft, hours, minutes, seconds) => {
   if (timeLeft > 0) {
-    lunchtid.innerHTML = "Om <br/> " + hours + "h " + minutes + "m " + seconds + "s ";
+    semestertid.innerHTML = "Om <br/> " + hours + "h " + minutes + "m " + seconds + "s ";
     document.title = defaultPageTitle + " Om " + hours + "h " + minutes + "m " + seconds + "s ";
   }
 
   if (timeLeft < 0) {
-    lunchtid.textContent = "Ja! Det är lunch!";
-    document.title = defaultPageTitle + " Ja! Det är lunch!";
+    semestertid.textContent = "Ja! Det är semester!";
+    document.title = defaultPageTitle + " Ja! Det är semester!";
   }
 };
 
 const getTimeLeft = () => {
   const now = new Date().getTime();
-  const lunchTime = getLunchTime();
-  const timeLeft = lunchTime - now;
+  const semesterTime = getSemesterTime();
+  const timeLeft = semesterTime - now;
   const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
