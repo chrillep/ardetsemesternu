@@ -1,0 +1,5 @@
+config.codekit3
+/.eslintcache
+/key.pem
+/cert.pem
+.vercel

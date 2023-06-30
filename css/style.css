@@ -1,0 +1,17 @@
+html,
+body {
+  height: 100%;
+  background-color: #b2d4e6;
+  color: #0a3c5c;
+}
+
+#lunchform {
+  text-align: center;
+}
+
+#lunchtid,
+h1 {
+  margin: 10vmin 0;
+  text-align: center;
+  font-size: 20vmin;
+}
